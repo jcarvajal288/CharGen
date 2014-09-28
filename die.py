@@ -1,4 +1,4 @@
-#!usr/bin/env python
+#!usr/bin/env python2
 
 import argparse
 import random
@@ -15,8 +15,7 @@ def _parseArgs():
     parser.add_argument('-v', '--verbose', dest='verbose', action='store_true', default=False, 
                         help='prints the results of every roll in the expression')
     args = parser.parse_args()
-    result = roll(args.expression, args.verbose)
-    print(result)
+    print(roll(args.expression, args.verbose))
 
 
 
@@ -44,12 +43,12 @@ def printRolls(results):
     prints individual die rolls in the form
     <result> (+/-) result (+/-) result ... = <total>
     """
-    print results[0],
+    print(results[0], end=" ")
     for result in results[1:]:
-        if result > 0: print "+",
-        else: print "-",
-        print result,
-    print "=",
+        if result > 0: print("+", end=" ")
+        else: print("-", end=" ")
+        print(result, end=" ")
+    print("=", end=" ")
 
 
 

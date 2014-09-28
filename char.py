@@ -14,7 +14,7 @@ def updateIndex(set, oldIndex, newIndex):
     if(set.count(oldIndex)) > 0:
         set[set.index(oldIndex)] = newIndex
     else:
-        print "ERROR: %s not found!" % (oldIndex)
+        print("ERROR: %s not found!" % (oldIndex))
 
 
 def _determineName(Race, Gender):
@@ -58,7 +58,7 @@ def _determineName(Race, Gender):
             data = open('./CharNames/OrcFemaleNames.txt')
         data2 = open('./CharNames/OrcMaleNames.txt') #Orcs use the first name of their father as their last name   
     else:
-        print "ERROR: Invalid race '%s'." % (Race)
+        print("ERROR: Invalid race '%s'." % (Race))
         quit()
 
     #getting data from text files and transferring them into lists
@@ -126,11 +126,11 @@ def getObject(objectname, filename):
                 return object
         # if the loop terminates, then no object by the given name was found
         else:
-            print "Invalid choice '%s'.  Choices are:" % (objectname),
+            print("Invalid choice '%s'.  Choices are:" % (objectname),)
             for name in objects:
                 object = getattr(object_module, name)
                 if inspect.isclass(object):
-                    print "%s " % (getattr(object, "Name").lower()),
+                    print("%s " % (getattr(object, "Name").lower()),)
             quit()
 
 
@@ -211,29 +211,29 @@ class Character(object):
 
 
     def display(self):
-        print "Name: %s" % (self.Name)
-        print "Race: %s" % (self.Race.Name)
-        print "Class: %s" % (self.Class.Name)
-        print ""
-        print "STR: %d (%s)" % (self.Str(), signed(self.StrMod()))
-        print "DEX: %d (%s)" % (self.Dex(), signed(self.DexMod()))
-        print "CON: %d (%s)" % (self.Con(), signed(self.ConMod()))
-        print "INT: %d (%s)" % (self.Int(), signed(self.IntMod()))
-        print "WIS: %d (%s)" % (self.Wis(), signed(self.WisMod()))
-        print "CHA: %d (%s)" % (self.Cha(), signed(self.ChaMod()))
-        print ""
-        print "Ranked Skills:"
+        print("Name: %s" % (self.Name))
+        print("Race: %s" % (self.Race.Name))
+        print("Class: %s" % (self.Class.Name))
+        print("")
+        print("STR: %d (%s)" % (self.Str(), signed(self.StrMod())))
+        print("DEX: %d (%s)" % (self.Dex(), signed(self.DexMod())))
+        print("CON: %d (%s)" % (self.Con(), signed(self.ConMod())))
+        print("INT: %d (%s)" % (self.Int(), signed(self.IntMod())))
+        print("WIS: %d (%s)" % (self.Wis(), signed(self.WisMod())))
+        print("CHA: %d (%s)" % (self.Cha(), signed(self.ChaMod())))
+        print("")
+        print("Ranked Skills:")
         skills = self.Skills.keys()
         skills.sort()
         for name in skills:
             if self.Skills[name].ranks > 0:
-                print "\t%s: %s" % (name, signed(self.Skills[name].bonus(self)))
-        print ""
-        print "Special Abilities:"
+                print("\t%s: %s" % (name, signed(self.Skills[name].bonus(self))))
+        print("")
+        print("Special Abilities:")
         for ability in self.SpecialAbilities:
-            print "\t%s" % (ability)
+            print("\t%s" % (ability))
 
     def summarize(self):
         """Prints a brief summary of the character to standard output"""
-        print "%s, Level %d %s %s" % (self.Name, self.Level, self.Race.Adjective, 
-                                      self.Class.Name)
+        print("%s, Level %d %s %s" % (self.Name, self.Level, self.Race.Adjective, 
+                                      self.Class.Name))
