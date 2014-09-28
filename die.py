@@ -15,7 +15,8 @@ def _parseArgs():
     parser.add_argument('-v', '--verbose', dest='verbose', action='store_true', default=False, 
                         help='prints the results of every roll in the expression')
     args = parser.parse_args()
-    print roll(args.expression, args.verbose)
+    result = roll(args.expression, args.verbose)
+    print(result)
 
 
 
