@@ -13,16 +13,19 @@ def main(screen):
 
     while True:
         cmd = getCommand(screen)
-        print(cmd)
+        screen.addstr(0, 0, cmd)
+        screen.refresh()
+
 
 def getCommand(screen):
     cmd = ""
     while True:
-        char = screen.getch() 
+        char = screen.getkey() 
         if char is '\r' or char is '\n':
             return cmd
         else:
-            cmd += char 
+            cmd += str(char)
+        screen.addstr(2, 2, cmd)
 
 
 def _help(command=""):
